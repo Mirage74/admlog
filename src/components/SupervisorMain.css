@@ -1,0 +1,13 @@
+#btnsuper {
+    margin-top: 5rem; 
+    font-size: 3rem;
+    width: 300px;
+}
+.form-control {
+    font-size: 2rem;
+}
+
+.col-client-apps {
+    border: solid 1px #000000;
+    font-size: 1.5rem
+}
