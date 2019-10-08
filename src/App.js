@@ -8,6 +8,7 @@ import Viewdeladmins from './components/ViewDelAdmins'
 import Editusers from './components/EditUsers'
 import Add from './components/Add'
 import Client from './components/Client'
+import About from './components/About'
 import Editexistuser from './components/EditExistUser'
 import { Provider } from 'react-redux'
 import store from './store'
@@ -67,6 +68,10 @@ class App extends Component {
                 <Route exact path='/user/edit/:_id'
                   render={(props) => <Editexistuser {...props} jwt={this.state.jwt} />}
                 />
+              <Route
+                exact path="/About"
+                render={(props) => <About {...props} />}
+              />                
               </Switch>
             </div>
           </div>

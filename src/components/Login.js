@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Redirect } from "react-router-dom"
 import { AUTH_SERVER } from '../config'
+//import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 
 class Login extends Component {
@@ -15,10 +16,14 @@ class Login extends Component {
     isSupervisor: false,
     isAdmin: false,
     redirectClient: false,
+    redirectAbout: false,    
     allowedApps: ""
   }
 
-
+  onSubmitAbout = e => {
+    e.preventDefault()
+    this.setState({redirectAbout: true})
+}
 
   onSubmit = e => {
     e.preventDefault()
@@ -71,13 +76,18 @@ class Login extends Component {
   render() {
     const { redirectSupervisor, redirectClient,  errors } = this.state
 
+    if (this.state.redirectAbout) {
+      return <Redirect to={{
+          pathname: 'About',
+          state: {
+//                    isAuth: true
+          }
+      }}
+      />
+  }
+
 
     let forRender, buttonLogin, buttonPass
-
-
-    // if (redirectSupervisor) {
-    //   return <Redirect to='/SupervisorMain' />
-    // }
 
     if (redirectSupervisor) {
       return <Redirect to={{
@@ -173,11 +183,11 @@ class Login extends Component {
                   </div>
 
                 </form>
-
               </div>
             </div>
+            <button type="submit" id="btnabout" className="btn btn-info"  onClick={this.onSubmitAbout} >About</button>                                  
           </div>
-
+          
         </div>
       </div>
     )
